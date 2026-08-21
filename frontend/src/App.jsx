@@ -5,6 +5,7 @@ function App() {
   
   const [code, setCode] = useState("");
   const [result, setResult] = useState("");
+  const [language, setLanguage] = useState("JavaScript");
   function handleClick() {
   console.log("Analyze clicked");
   if (code.length === 0) {
@@ -12,6 +13,9 @@ function App() {
 }
 else if (code.includes("function")) {
   setResult("This code contains a function.");
+}
+else if (language === "Python") {
+  setResult("You selected Python.");
 }
 else{
    setResult("You entered " + code.length + " characters.");
@@ -21,7 +25,12 @@ else{
   return (
   <div>
     <Header name={name} />
-      
+    <select  value={language}
+     onChange={(e) => setLanguage(e.target.value)}>
+       <option>JavaScript</option>
+       <option>Python</option>
+       <option>C++</option>
+    </select>
       <textarea
          value={code}
          onChange={(e) => setCode(e.target.value)}
