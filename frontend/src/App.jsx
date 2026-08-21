@@ -1,5 +1,8 @@
 import Header from "./Header"
 import { useState } from "react"
+import CodeEditor from "./CodeEditor"
+import AnalysisResult from "./AnalysisResult"
+import "./App.css"
 function App() {
   const name = "CodeLens";
   
@@ -26,20 +29,22 @@ else{
  
 }
   return (
-  <div>
+  <div className="app">
     <Header name={name} />
+    <label htmlFor="language">Language</label>
     <select  value={language}
-     onChange={(e) => setLanguage(e.target.value)}>
+     onChange={(e) => setLanguage(e.target.value)}
+     id="language">
        <option>JavaScript</option>
        <option>Python</option>
        <option>C++</option>
     </select>
-      <textarea
-         value={code}
-         onChange={(e) => setCode(e.target.value)}
-      ></textarea>
-      <p>{result}</p>
-      <button onClick={handleClick}>Analyze</button>
+      
+      <CodeEditor code={code} setCode={setCode} />
+      <AnalysisResult result={result} />
+      <button className="analyze-button" onClick={handleClick}>
+         Analyze
+         </button>
   </div>
   )
 }
