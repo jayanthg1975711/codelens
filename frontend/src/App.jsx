@@ -11,11 +11,14 @@ function App() {
   if (code.length === 0) {
   setResult("No code entered.");
 }
-else if (code.includes("function")) {
-  setResult("This code contains a function.");
+else if (language === "JavaScript" && code.includes("function")) {
+  setResult("This JavaScript code contains a function.");
 }
-else if (language === "Python") {
-  setResult("You selected Python.");
+else if (language === "Python" && code.includes("def")) {
+  setResult("This Python code contains a function.");
+}
+else if (language === "C++" && code.includes("#include")) {
+setResult("This C++ code contains an include statement.");
 }
 else{
    setResult("You entered " + code.length + " characters.");
